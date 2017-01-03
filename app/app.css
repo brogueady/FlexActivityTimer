@@ -1,0 +1,24 @@
+button {
+    /** ALL CAPS **/
+    text-transform: capitalize;
+    background-color: black;
+}
+
+dockLayout { 
+    background-color: black;
+}
+
+gridLayout { 
+    background-color: black;
+}
+
+actionBar { 
+    background-color: black;
+    color: white;
+}
+
+page {
+    background-color: black;
+    color: white;
+}
+

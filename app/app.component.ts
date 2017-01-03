@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
+import {FooterActions} from "./shared/footer/footerActions.component";
 
 @Component({
-  selector: "my-app",
-  template: "<Label text='hello world'></Label>"
+  templateUrl: "app.html"
 })
 export class AppComponent {}
