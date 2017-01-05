@@ -1,4 +1,4 @@
-import {Session} from "./shared/sessions/session";
+import {Session} from "shared/sessions/session";
 
 export class SessionService {
     
