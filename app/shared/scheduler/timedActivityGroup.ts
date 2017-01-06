@@ -1,4 +1,4 @@
-import {TimedActivity} from "shared/scheduler/timedActivity";
+import {TimedActivity} from "../../shared/scheduler/timedActivity";
 
 export class TimedActivityGroup {
     timedActivies: TimedActivity[];

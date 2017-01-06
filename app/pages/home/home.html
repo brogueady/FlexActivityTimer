@@ -1,20 +1,20 @@
 <ActionBar title="Sessions">
-    <ActionItem (tap)="editSession()" ios.systemIcon="2" android.systemIcon="ic_menu_edit" ios.position="right"></ActionItem>
     <ActionItem (tap)="searchSessions()" ios.systemIcon="12" android.systemIcon="ic_menu_search" ios.position="right"></ActionItem>
 </ActionBar>
 
-<TextView text="ade" visibility="visible"></TextView>
- <StackLayout>
-      <Label visibility="visible" style="color: white" text="Abs Workout 1"></Label>
-      <Label text="Abs Workout 2"></Label>
-      <Label text="Abs Workout 3"></Label>
-      <TextView text="ade" ></TextView>
+<GridLayout>
+  <ListView [items]="sessions" class="small-spacing">
+    <template let-session="item">
+      <Label [text]="session.name" class="medium-spacing"></Label>
+    </template>
+  </ListView>
+</GridLayout>
+
+<DockLayout stretchLastChild="false" height="210" width="100%">
+   <StackLayout dock="bottom" orientation="horizontal">
+       <Button  width="33%" text="Create Session" style="background-color: lightblue; margin: 1; color: black"></Button>
+        <Button  width="33%" text="Exercises" style="background-color: lightblue; margin: 1; color: black"></Button>
+        <Button  width="33%"  text="About" style="background-color: lightblue; margin: 1; color: black" ></Button>
    </StackLayout>
+ </DockLayout>
 
-
-<AbsoluteLayout width="210" height="210" backgroundColor="lightgray">
-    <Label text="10, 10" left="10" top="10" width="90" height="90" backgroundColor="red"></Label>
-    <Label text="110, 10" left="110" top="10" width="90" height="90" backgroundColor="green"></Label>
-    <Label text="110, 110" left="110" top="110" width="90" height="90" backgroundColor="blue"></Label>
-    <Label text="10, 110" left="10" top="110" width="90" height="90" backgroundColor="yellow"></Label>
-</AbsoluteLayout>

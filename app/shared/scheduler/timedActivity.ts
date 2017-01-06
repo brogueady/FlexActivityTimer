@@ -1,4 +1,4 @@
-import {Activity} from "shared/activity/activity";
+import {Activity} from "../../shared/activity/activity";
 
 export class TimedActivity {
     restPeriodInSecs: number;

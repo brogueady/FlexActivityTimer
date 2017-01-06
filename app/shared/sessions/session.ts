@@ -1,4 +1,4 @@
-import {TimedActivityGroup} from 'shared/scheduler/TimedActivityGroup';
+import {TimedActivityGroup} from '../../shared/scheduler/TimedActivityGroup';
 
 export class Session {
     id:string;
@@ -6,8 +6,9 @@ export class Session {
     description: String;
     timedActitiyGroups: TimedActivityGroup[];
 
-    constructor(name: string) {
+    constructor(name: string, description: string) {
         this.name = name;
+        this.description = description;
     }
 
 }

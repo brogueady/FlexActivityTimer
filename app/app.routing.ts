@@ -1,7 +1,7 @@
 import {HomeComponent} from "./pages/home/home.component";
 
 export const routes = [
-    { path: "", component: HomeComponent },
+    { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "home", component: HomeComponent }
 ];
 
