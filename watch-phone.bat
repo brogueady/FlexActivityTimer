@@ -1,0 +1,1 @@
+tns livesync android  --watch 

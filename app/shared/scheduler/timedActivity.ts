@@ -5,4 +5,12 @@ export class TimedActivity {
     workPeriodInSecs: number;
     activity: Activity;
     repeat: number;
+
+    constructor(restPeriodInSecs: number,
+                workPeriodInSecs: number,
+                activity: Activity,
+                repeat: number
+    ) {
+    }
+    
 }

@@ -4,11 +4,18 @@ export class Session {
     id:string;
     name: string;
     description: String;
-    timedActitiyGroups: TimedActivityGroup[];
+    timedActivityGroups: TimedActivityGroup[];
 
     constructor(name: string, description: string) {
         this.name = name;
         this.description = description;
     }
 
+    setTimedActivityGroups(timedActivityGroups) {
+        this.timedActivityGroups = timedActivityGroups;
+    }
+
+    getTime() {
+        return "(30 mins)";
+    }
 }

@@ -22,3 +22,11 @@ page {
     color: white;
 }
 
+.menuButton {
+    background-color: lightblue; color: black
+}
+
+.bottomMenu {
+    width:33%
+}
+
