@@ -1,13 +1,17 @@
 import {TimedActivity} from "../../shared/scheduler/timedActivity";
 
 export class TimedActivityGroup {
-    timedActivies: TimedActivity[];
+    timedActivities: TimedActivity[];
     restPeriodAfterGroupInSecs: number;
     repeat: number;
 
-    constructor(timedActivies: TimedActivity[],
+    constructor(timedActivities: TimedActivity[],
                 restPeriodAfterGroupInSecs: number,
                 repeat: number
-    ){}
+    ) {
+        this.timedActivities = timedActivities;
+        this.restPeriodAfterGroupInSecs = restPeriodAfterGroupInSecs;
+        this.repeat = repeat;
+    }
     
 }

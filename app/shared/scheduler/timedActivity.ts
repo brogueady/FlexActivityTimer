@@ -11,6 +11,10 @@ export class TimedActivity {
                 activity: Activity,
                 repeat: number
     ) {
+        this.activity = activity;
+        this.workPeriodInSecs = workPeriodInSecs;
+        this.restPeriodInSecs = restPeriodInSecs;
+        this.repeat = repeat;
     }
-    
+
 }

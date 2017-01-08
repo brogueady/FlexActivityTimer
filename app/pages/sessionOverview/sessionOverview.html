@@ -1,0 +1,50 @@
+<ActionBar title="">
+    <ActionItem text="Go Back" android.position="left" android.systemIcon="ic_menu_back"></ActionItem>
+
+    <ActionItem text="Edit" android.systemIcon="ic_menu_edit"></ActionItem>
+    <ActionItem text="Del" android.systemIcon="ic_delete"></ActionItem>
+</ActionBar>
+
+
+<GridLayout height="100%" class="sessionOverview" rows="20, 10*" columns="*">
+    <StackLayout row="0" orientation="vertical">
+        <Label [text]="session.name"></Label>
+        <Label [text]="session.description" textWrap="true"></Label>
+    </StackLayout>
+
+    <!--
+    <ListView row="2" [items]="session.timedActivityGroups" class="small-spacing" rowHeight="40">
+        <template let-timedActivityGroup="item"> -->
+
+
+    <StackLayout orientation="vertical" row="1">
+        <template ngFor let-timedActivityGroup [ngForOf]="session.timedActivityGroups" let-i="index">
+            <StackLayout orientation="horizontal">
+                <Label text="{{ 'Group ' + i + ' - Repeat ' + repeatAmount(timedActivityGroup.repeat)}}"></Label>
+                
+            </StackLayout>
+            <StackLayout class="table" orientation="horizontal">
+                <Label class="table" width="52%" text="name" textWrap="true"></Label>
+                <Label class="table" width="18%" text="work"></Label>
+                <Label class="table" width="18%" text="rest"></Label>
+                <Label class="table" width="18%" text="repeat"></Label>
+            </StackLayout>
+            
+            <ListView [items]="timedActivityGroup.timedActivities">
+                <template let-item="item">
+                    <StackLayout class="table" orientation="horizontal">
+                        <Label width="52%" [text]="item.activity.name"></Label>
+                        <Label width="18%" [text]="item.workPeriodInSecs"></Label>
+                        <Label width="18%" [text]="item.restPeriodInSecs"></Label>
+                        <Label width="18%" [text]="item.repeat"></Label>
+                    </StackLayout>
+                </template>
+            </ListView>
+        </template>
+
+    </StackLayout>
+    <!--
+        </template>
+    </ListView>
+-->
+</GridLayout>

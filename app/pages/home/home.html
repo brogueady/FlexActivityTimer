@@ -1,32 +1,31 @@
 <ActionBar title="Sessions">
+    <NavigationButton android.systemIcon="ic_menu_moreoverflow" (tap)="showMainOptions"></NavigationButton>
     <ActionItem (tap)="searchSessions()" ios.systemIcon="12" android.systemIcon="ic_menu_search" ios.position="right"></ActionItem>
+
 </ActionBar>
 
 <GridLayout rows="4*, 1*">
-  <ListView row="0" [items]="sessions" (itemTap)="onSessionTap($event)" class="small-spacing" height="85%">
-        
+    <ListView row="0" [items]="sessions" (itemTap)="onSessionTap($event)" class="small-spacing" height="85%">
 
-    <template let-session="item" >
-        <StackLayout orientation="vertical">
-            <StackLayout style="height: 1; border-color: gray; border-width: 1;"></StackLayout>
-            <StackLayout orientation="horizontal">
-                <Label [text]="session.name" class="sessionLabel"></Label>    
-                <Label [text]="session.getTime()" class="sessionTime" ></Label>    
-                <Button class="sessionButton"></Button>
-            </StackLayout>        
-            
+
+        <template let-session="item" [nsRouterLink]="['/sessionOverview']">
+            <StackLayout orientation="vertical">
+                <StackLayout style="height: 1; border-color: #1f2021; border-width: 1;"></StackLayout>
+                <StackLayout orientation="horizontal">
+                    <Label [text]="session.name" class="sessionLabel"></Label>
+                    <Label [text]="session.getTime()" class="sessionTime"></Label>
+                </StackLayout>
+
+            </StackLayout>
+        </template>
+    </ListView>
+
+    <DockLayout row="1" stretchLastChild="false" height="60" width="100%">
+        <StackLayout dock="bottom" orientation="horizontal">
+            <Button text="Create Session" class="menuButton bottomMenu"></Button>
+            <Button text="Generate Session" class="menuButton bottomMenu"></Button>
+            <Button text="Exercises & Activities" class="menuButton bottomMenu"></Button>
         </StackLayout>
-    </template>
-  </ListView>
-
-  <DockLayout row="1" stretchLastChild="false" height="60" width="100%">
-   <StackLayout dock="bottom" orientation="horizontal">
-       <Button  text="Create Session" class="menuButton bottomMenu" ></Button>
-        <Button  text="Exercises" class="menuButton bottomMenu"></Button>
-        <Button   text="About" class="menuButton bottomMenu"  ></Button>
-   </StackLayout>
- </DockLayout>
+    </DockLayout>
 
 </GridLayout>
-
-

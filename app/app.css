@@ -1,29 +1,29 @@
-button {
+Button {
     /** ALL CAPS **/
     text-transform: capitalize;
     background-color: black;
 }
 
-dockLayout { 
+DockLayout { 
     background-color: black;
 }
 
-gridLayout { 
+GridLayout { 
     background-color: black;
 }
 
-actionBar { 
+ActionBar { 
     background-color: black;
     color: white;
 }
 
-page {
+Page {
     background-color: black;
     color: white;
 }
 
 .menuButton {
-    background-color: lightblue; color: black
+    background-color: #467ace; color: black
 }
 
 .bottomMenu {

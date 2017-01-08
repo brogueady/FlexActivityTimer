@@ -4,11 +4,12 @@ export class Session {
     id:string;
     name: string;
     description: String;
-    timedActivityGroups: TimedActivityGroup[];
+    timedActivityGroups: Array<TimedActivityGroup>;
 
-    constructor(name: string, description: string) {
+    constructor(name: string, description: string, id: string) {
         this.name = name;
         this.description = description;
+        this.id = id;
     }
 
     setTimedActivityGroups(timedActivityGroups) {
