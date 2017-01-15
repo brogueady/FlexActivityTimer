@@ -20,7 +20,7 @@
             <StackLayout orientation="horizontal">
                 <Button width="10%" class="downButton" (tap)="moveGroupDown(i)"></Button>
                 <Label text="{{ 'Group ' + i + ' - Repeat '}}"></Label>
-                <TextField hint="" [(ngModel)]="timedActivityGroup.repeat"></TextField>
+                <TextField hint="" [ngModel]="timedActivityGroup.repeat" (ngModelChange)="changeGroupRepeat($event, i)"></TextField>
                 <Label text="times"></Label>
                 <Button  width="10%" class="upButton" (tap)="moveGroupUp(i)"></Button>
             </StackLayout>

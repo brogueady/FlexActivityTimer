@@ -8,7 +8,7 @@
     <ListView row="0" [items]="sessions" (itemTap)="onSessionTap($event)" class="small-spacing" height="85%">
 
 
-        <template let-session="item" [nsRouterLink]="['/sessionOverview']">
+        <template let-session="item">
             <StackLayout orientation="vertical">
                 <StackLayout style="height: 1; border-color: #1f2021; border-width: 1;"></StackLayout>
                 <StackLayout orientation="horizontal">

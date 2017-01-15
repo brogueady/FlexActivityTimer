@@ -97,4 +97,8 @@ export class EditSessionComponent implements OnInit {
             this.promptSave();
         }
     }
+
+    changeGroupRepeat(eventData, groupIndex) {
+        this.session.timedActivityGroups[groupIndex].repeat = parseInt(eventData);
+    }
 }
