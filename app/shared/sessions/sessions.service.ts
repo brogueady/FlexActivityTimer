@@ -4,6 +4,7 @@ import {Activity} from "../../shared/activity/activity";
 import {TimedActivity} from "../../shared/scheduler/timedActivity";
 import {TimedActivityGroup} from "../../shared/scheduler/timedActivityGroup";
 import {Guid} from "../utils/guid";
+import * as _ from "lodash";
 
 @Injectable()
 export class SessionService {
@@ -50,14 +51,18 @@ export class SessionService {
 
     getSession(id:string) {
         console.log("finding session with id: " + id);
-        return this.sessions.filter(session => session.id === id)[0];
+        return _.cloneDeep(this.sessions.filter(session => session.id === id)[0]);
     }
 
     getSessions() {
-        return this.sessions;
+        return _.cloneDeep(this.sessions);
     }
 
     createSession(name: string, description: string) {
         return new Session(name, description, this.guid.guid());
+    }
+
+    save(session: Session) {
+        let sessionToReplace = this.sessions.map(originalSession => { if (session.id === originalSession.id) { return session; }});
     }
 }

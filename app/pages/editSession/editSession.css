@@ -1,0 +1,11 @@
+.upButton {
+    -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: green;
+}
+
+.downButton {
+    -webkit-clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    background-color: green;
+}

@@ -24,29 +24,17 @@ export class Session {
         return "(30 mins)";
     }
 
-    start() {
-        console.log("started sessions");
-        this.activeTimedActivityGroupsIndex=0;
-        this.activeTimedActivityGroup = this.timedActivityGroups[this.activeTimedActivityGroupsIndex];
+    hasMoreGroups() {
+        if (this.timedActivityGroups.length >= this.activeTimedActivityGroupsIndex+1 ) {
+            console.log("session does have more groups");
+            return true;
+        }
+        console.log("session does NOT have more groups");
+        return false;
     }
 
-    hasMoreActivities() {
-        if (!this.activeTimedActivityGroup.hasMoreActivities()) {
-            if (this.activeTimedActivityGroupsIndex+1 >= this.timedActivityGroups.length ) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    nextActivity() {
-        let activity: Activity = this.activeTimedActivityGroup.nextActivity();
-        if (activity==null) {
-            this.activeTimedActivityGroup = this.timedActivityGroups[++this.activeTimedActivityGroupsIndex];
-            activity = this.activeTimedActivityGroup.nextActivity();
-        }
-
-        return activity;
+    nextGroup() {
+        console.log("getting group " + this.activeTimedActivityGroupsIndex);
+        return this.timedActivityGroups[this.activeTimedActivityGroupsIndex++];
     }
 }

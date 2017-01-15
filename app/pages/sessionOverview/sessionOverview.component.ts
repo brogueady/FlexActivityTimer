@@ -5,6 +5,7 @@ import {Session} from "../../shared/sessions/session";
 import {SessionService} from "../../shared/sessions/sessions.service";
 import {OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: 'pages/sessionOverview/sessionOverview.html',
@@ -14,7 +15,7 @@ export class SessionOverviewComponent implements OnInit {
     timedActivityGroups: Array<TimedActivityGroup> = [];
     session: Session;
 
-    constructor(private sessionService: SessionService, private route: ActivatedRoute ) {}
+    constructor(private sessionService: SessionService, private route: ActivatedRoute, private router: Router ) {}
 
     ngOnInit() {
         let id = this.route.snapshot.params['id'];
@@ -27,6 +28,14 @@ export class SessionOverviewComponent implements OnInit {
 
     repeatAmount(repeat: number) {
         return repeat===1 ? "once" : repeat + " times"
+    }
 
+    startSession() {
+        console.log("tapped button to start session:");
+        this.router.navigate(["activeSession", this.session.id]);
+    }
+
+    edit() {
+        this.router.navigate(["editSession", this.session.id]);
     }
 }

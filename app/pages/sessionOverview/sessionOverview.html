@@ -1,7 +1,7 @@
 <ActionBar title="">
     <ActionItem text="Go Back" android.position="left" android.systemIcon="ic_menu_back"></ActionItem>
 
-    <ActionItem text="Edit" android.systemIcon="ic_menu_edit"></ActionItem>
+    <ActionItem text="Edit" (tap)="edit()" android.systemIcon="ic_menu_edit"></ActionItem>
     <ActionItem text="Del" android.systemIcon="ic_delete"></ActionItem>
 </ActionBar>
 
@@ -17,7 +17,7 @@
         <template let-timedActivityGroup="item"> -->
 
 
-    <StackLayout orientation="vertical" row="1">
+    <StackLayout orientation="vertical" row="1"> 
         <template ngFor let-timedActivityGroup [ngForOf]="session.timedActivityGroups" let-i="index">
             <StackLayout orientation="horizontal">
                 <Label text="{{ 'Group ' + i + ' - Repeat ' + repeatAmount(timedActivityGroup.repeat)}}"></Label>
@@ -46,7 +46,7 @@
 
     <DockLayout row="1" stretchLastChild="false" height="60" width="33%"> 
         <StackLayout dock="bottom" orientation="horizontal">
-            <Button text="Start Session" class="menuButton bottomMenu"></Button>
+            <Button text="Start Session" (tap)="startSession($event)" class="menuButton bottomMenu"></Button>
         </StackLayout>
     </DockLayout>
     

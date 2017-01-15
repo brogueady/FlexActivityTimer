@@ -20,6 +20,11 @@ export class HomeComponent implements OnInit {
     
   }    
 
+  createSession() {
+      console.log("session create selected");
+      this.router.navigate(["editSession"]);
+  }
+
   onSessionTap(eventData) {
       console.log("session selected with id: "+eventData.view.bindingContext.id);
       this.router.navigate(["sessionOverview", eventData.view.bindingContext.id]);

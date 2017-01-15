@@ -1,0 +1,25 @@
+<ActionBar title="">
+    <ActionItem text="Go Back" android.position="left" android.systemIcon="ic_menu_back"></ActionItem>
+
+    <ActionItem text="Edit" android.systemIcon="ic_menu_edit"></ActionItem>
+    <ActionItem text="Del" android.systemIcon="ic_delete"></ActionItem>
+</ActionBar>
+
+
+<GridLayout height="100%" class="" rows="40, *" columns="*">
+    <StackLayout row="0" orientation="vertical">
+        <Label [text]="activityName" textWrap="true"></Label>
+        <Label [text]="timerCountdown" textWrap="true"></Label>
+    </StackLayout>
+
+    <DockLayout row="1" stretchLastChild="false" height="60" width="100%"> 
+        <StackLayout dock="bottom" orientation="horizontal">
+            <Button text="Play" (tap)="continue()" class="menuButton"></Button>
+            <Button text="Pause Session" (tap)="pause()" class="menuButton"></Button>
+            <Button text="Stop Session" (tap)="stop()" class="menuButton"></Button>
+            <Button text="Restart Session" (tap)="restartSession()" class="menuButton"></Button>
+            <Button text="Restart Activity" (tap)="restartActivity()" class="menuButton"></Button>
+        </StackLayout>
+    </DockLayout>
+    
+</GridLayout>
