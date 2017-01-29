@@ -11,7 +11,6 @@ import dialogs = require("ui/dialogs");
 
 
 @Component({
-     moduleId: module.id,
     templateUrl: 'pages/activity/activity.component.html'
 })
 export class ActivityComponent implements OnInit {
@@ -28,7 +27,7 @@ export class ActivityComponent implements OnInit {
         console.log("session:" + this.session);
         console.log("timed groups:" + this.session.timedActivityGroups);
         console.log("Group Number = " + this.session.timedActivityGroups.length);
-        //this.session.timedActivityGroups.forEach(function(value, index) { this.groupNames.push(""+ index)}, this);
+        this.session.timedActivityGroups.forEach(function(value, index) { this.groupNames.push(""+ index)}, this);
         console.log("Group Names: " + this.groupNames);
         this.timedActivity = new TimedActivity(30, 30, new Activity("", ""), 1);
         
@@ -48,25 +47,25 @@ export class ActivityComponent implements OnInit {
         });
     }
 
-    public save() {
+    save() {
         this.sessionService.save(this.session);
     }
 
-    public cancel() {
+    cancel() {
         this.navigateToEditSession();
     }
 
-    public goBack() {
+    goBack() {
         console.log("original session = "+ JSON.stringify(this.session));
         console.log("new session = "+ JSON.stringify(this.session));
         this.promptSave();
     }
 
     navigateToEditSession() {
-        this.router.navigate(["editSsession", this.session.id]);
+        this.router.navigate(["editSession", this.session.id]);
     }
     
-    public selectedIndexChanged(picker) {
+    selectedIndexChanged(picker) {
         console.log("picker selection: " + picker.selectedIndex);
         this.groupPicked = picker.selectedIndex;
     }
