@@ -38,4 +38,8 @@ export class SessionOverviewComponent implements OnInit {
     edit() {
         this.router.navigate(["editSession", this.session.id]);
     }
+
+    goBack() {
+        this.router.navigate(["home"]);
+    }
 }

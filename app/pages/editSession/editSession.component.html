@@ -36,9 +36,9 @@
                     <StackLayout orientation="horizontal">
                         <Button width="10%" class="downButton" (tap)="moveDown(timedActivityIndex, i)"></Button>
                         <Label width="50%" [text]='timedActivity.activity.name' class="sessionLabel"></Label>
-                        <TextField width="10%" [(ngModel)]="timedActivity.workPeriodInSecs"></TextField>
-                        <TextField width="10%" [(ngModel)]="timedActivity.restPeriodInSecs"></TextField>
-                        <TextField width="10%" [(ngModel)]="timedActivity.repeat"></TextField>
+                        <TextField width="10%" [ngModel]="timedActivity.workPeriodInSecs" (ngModelChange)="changeNumberValue($event, timedActivity.workPeriodInSecs)"></TextField>
+                        <TextField width="10%" [ngModel]="timedActivity.restPeriodInSecs" (ngModelChange)="changeNumberValue($event, timedActivity.restPeriodInSecs)"></TextField>
+                        <TextField width="10%" [ngModel]="timedActivity.repeat" (ngModelChange)="changeNumberValue($event, timedActivity.repeat)"></TextField>
                         <Button  width="10%" class="upButton" (tap)="moveUp(timedActivityIndex, i)"></Button>
                     </StackLayout>
                 </template>
@@ -50,7 +50,7 @@
     <DockLayout row="1" stretchLastChild="false" height="60" width="100%">
         <StackLayout dock="bottom" orientation="horizontal">
             <Button text="Add Group" (tap)="createSession()" class="menuButton bottomMenu"></Button>
-            <Button text="Add Activity" class="menuButton bottomMenu"></Button>
+            <Button text="Add Activity" (tap)="createActivity()" class="menuButton bottomMenu"></Button>
         </StackLayout>
     </DockLayout>
    

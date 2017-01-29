@@ -33,4 +33,16 @@ export class HomeComponent implements OnInit {
   onShowMainOptions() {
       
   }
+
+  searchSessions(eventdata) {
+      
+  }
+
+  onClear() {
+      
+  }
+
+  onSearch(eventData) {
+    console.log("Searching: " + eventData);
+  }
 }

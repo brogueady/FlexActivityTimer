@@ -5,16 +5,19 @@ import {TimedActivity} from "../../shared/scheduler/timedActivity";
 import {TimedActivityGroup} from "../../shared/scheduler/timedActivityGroup";
 import {Guid} from "../utils/guid";
 import * as _ from "lodash";
+import {Abs} from "../bodyZones/Abs";
+import {BodyZones} from "../bodyZones/BodyZones";
 
 @Injectable()
 export class SessionService {
     sessions: Array<Session>;
+    sessionInEdit: Session;
 
     ngOnInit() {
         
     }
 
-    constructor(private guid: Guid) {
+    constructor(private guid: Guid, private abs:Abs) {
         this.loadSessions();
     }
 
@@ -30,8 +33,8 @@ export class SessionService {
         let timedActivityGroup1: TimedActivityGroup = new TimedActivityGroup([timedActivity1, timedActivity2], 4, 2);
         let timedActivityGroup2: TimedActivityGroup = new TimedActivityGroup([timedActivity1, timedActivity2, timedActivity3], 1, 5);
 
-        let session: Session = this.createSession("Abs Workout 1", "description blah blah blha blah");
-        let session2: Session = this.createSession("Abs Workout 2", "description blah blah blha blah");
+        let session: Session = this.createSession("Abs Workout 1", "description blah blah blha blah", [this.abs]);
+        let session2: Session = this.createSession("Abs Workout 2", "description blah blah blha blah",[this.abs] );
         session.setTimedActivityGroups([timedActivityGroup1]);
         session2.setTimedActivityGroups([timedActivityGroup1, timedActivityGroup2]);
         this.sessions.push(session);
@@ -54,15 +57,31 @@ export class SessionService {
         return _.cloneDeep(this.sessions.filter(session => session.id === id)[0]);
     }
 
+    getSessionInEdit() {
+        return this.sessionInEdit;
+    }
+
+    getEditableSession(id:string) {
+        console.log("finding session with id: " + id);
+        this.sessionInEdit = _.cloneDeep(this.sessions.filter(session => session.id === id)[0]);
+        return this.sessionInEdit;
+    }
+
     getSessions() {
         return _.cloneDeep(this.sessions);
     }
 
-    createSession(name: string, description: string) {
-        return new Session(name, description, this.guid.guid());
+    createSession(name: string, description: string, bodyZones: Array<BodyZones>) {
+        return new Session(name, description, this.guid.guid(), bodyZones);
     }
 
     save(session: Session) {
-        let sessionToReplace = this.sessions.map(originalSession => { if (session.id === originalSession.id) { return session; }});
+        this.sessions = this.sessions.map(originalSession => { if (session.id === originalSession.id) { return session; } else { return originalSession}});
+        console.log("Session replaced with " + JSON.stringify(session));
     }
+
+    saveSessionInEdit(session: Session) {
+        this.sessionInEdit = session;
+    }
+
 }

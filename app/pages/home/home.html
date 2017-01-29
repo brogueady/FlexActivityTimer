@@ -5,6 +5,10 @@
 </ActionBar>
 
 <GridLayout rows="4*, 1*">
+    <StackLayout orientation="vertical">
+        <SearchBar id="searchBar" hint="Search" text="" (clear)="onClear()" (submit)="onSearch()" class="search-bar"></SearchBar>
+        
+    </StackLayout>
     <ListView row="0" [items]="sessions" (itemTap)="onSessionTap($event)" class="small-spacing" height="85%">
 
 

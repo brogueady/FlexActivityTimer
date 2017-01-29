@@ -32,7 +32,7 @@ export class EditSessionComponent implements OnInit {
 
         let id = this.activatedRoute.snapshot.params['id'];
         console.log("session id:" + id);
-        this.session = this.sessionService.getSession(id);
+        this.session = this.sessionService.getEditableSession(id);
         this.originalSession = _.cloneDeep(this.session);
         console.log("Found session: " + this.session.name);
         this.activities = this.session.timedActivityGroups[0].timedActivities;
@@ -83,7 +83,7 @@ export class EditSessionComponent implements OnInit {
             if (result) {
                 this.save();
             }
-            this.router.navigate(["sessionOverview", this.session.id]);
+            this.navigateToSessionOverview();
            
         });
     }
@@ -93,12 +93,32 @@ export class EditSessionComponent implements OnInit {
     }
 
     goBack() {
+        console.log("original session = "+ JSON.stringify(this.session));
+        console.log("new session = "+ JSON.stringify(this.session));
         if (!_.isEqual(this.originalSession, this.session)) {
             this.promptSave();
+        } else {
+            this.navigateToSessionOverview();
         }
     }
 
+    navigateToSessionOverview() {
+        this.router.navigate(["sessionOverview", this.session.id]);
+    }
+    
+    createActivity() {
+        this.sessionService.saveSessionInEdit(this.session);
+        this.router.navigate(["addActivity", this.session.id]);
+    }
+
+    changeNumberValue(eventData, value) {
+        value = parseInt(eventData);
+    }
+
     changeGroupRepeat(eventData, groupIndex) {
+        console.log("setting group repeat " + groupIndex + " with value " + eventData);
+
         this.session.timedActivityGroups[groupIndex].repeat = parseInt(eventData);
+        console.log("new session = "+ JSON.stringify(this.session));
     }
 }
