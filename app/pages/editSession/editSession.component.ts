@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ObservableArray } from 'data/observable-array';
 import { ActivatedRoute } from "@angular/router";
 import { SessionService } from "../../shared/sessions/sessions.service";
 import { Session } from "../../shared/sessions/session";
@@ -7,6 +8,7 @@ import { TimedActivity } from "../../shared/scheduler/timedActivity";
 import { Activity } from "../../shared/activity/activity";
 import { ActivityService } from "../../shared/activity/activity.service";
 import { Router } from "@angular/router";
+import {ListViewEventData} from "nativescript-telerik-ui/listview";
 import * as _ from "lodash";
 import dialogs = require("ui/dialogs");
 
@@ -39,6 +41,22 @@ export class EditSessionComponent implements OnInit {
         console.log("activities length=" + this.activities.length);
 
         this.repeatList = ["Once", "2 times", "3 times", "4 times", "5 times"];
+    }
+
+    public onItemReordered(args: ListViewEventData) {
+        console.log("Item reordered. Old index: " + args.itemIndex + " " + "new index: " + args.data.targetIndex);
+    }
+
+    public getObservableTimedActivies(timedActivities:Array<TimedActivity>):ObservableArray<TimedActivity> {
+        return new ObservableArray(timedActivities);
+    }
+
+    get acts(): ObservableArray<string> {
+        var t = new ObservableArray<string>();
+        t.push("1");
+        t.push("2");
+        t.push("3");
+        return t;
     }
 
     repeatAmount(repeat: number) {

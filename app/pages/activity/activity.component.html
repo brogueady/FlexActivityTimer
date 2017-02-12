@@ -6,13 +6,10 @@
 </ActionBar>
 
 <StackLayout orientation="vertical" xmlns:ac="nativescript-autocomplete">
-    <Label text="Activity belongs to group" textWrap="true"></Label>
-    <ListPicker #picker [items]="groupNames" [selectedIndex]="selectedIndex" (selectedIndexChange)="selectedIndexChanged(picker)" ></ListPicker>
-    
     <Label text="Activity Name" textWrap="true"></Label>
     <TextField [(text)]="timedActivity.activity.name"></TextField>
 
-    <Label text="Activity Name" textWrap="true"></Label>
+    <Label text="Activity Description" textWrap="true"></Label>
     <TextField [(text)]="timedActivity.activity.description"></TextField>
 
     <Label text="Activity Duration" textWrap="true"></Label>

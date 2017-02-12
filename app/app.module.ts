@@ -15,6 +15,8 @@ import {Guid} from "./shared/utils/guid";
 import {CountdownTimer} from "./shared/utils/countdownTimer";
 import {Abs} from "./shared/bodyZones/Abs";
 import {Shoulders} from "./shared/bodyZones/Shoulders";
+import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
+import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
 
 @NgModule({
   providers: [
@@ -31,7 +33,8 @@ import {Shoulders} from "./shared/bodyZones/Shoulders";
     NativeScriptFormsModule],
     
 
-  declarations: [AppComponent, HomeComponent, SessionOverviewComponent, ActiveSessionComponent, EditSessionComponent, ActivityComponent, ...navigatableComponents],
+  declarations: [AppComponent, HomeComponent, SessionOverviewComponent, ActiveSessionComponent, EditSessionComponent, ActivityComponent, LISTVIEW_DIRECTIVES,
+        SIDEDRAWER_DIRECTIVES, ...navigatableComponents],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
